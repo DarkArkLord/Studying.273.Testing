@@ -1,4 +1,6 @@
-﻿namespace Studying._273.Testing
+﻿using System;
+
+namespace Studying._273.Testing
 {
     internal class Program
     {

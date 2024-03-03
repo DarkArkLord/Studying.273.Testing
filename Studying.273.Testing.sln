@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DArtTests", "DArtTests\DArt
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DBaseSiteTestFramework", "DBaseSiteTestFramework\DBaseSiteTestFramework.csproj", "{34C7147E-CD52-4026-B5C8-6DF1F262D51D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DArtNowTestFramework", "DArtNowTestFramework\DArtNowTestFramework.csproj", "{DAE1E872-B2C3-49D2-9ACC-5D7C4AC477DC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{34C7147E-CD52-4026-B5C8-6DF1F262D51D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{34C7147E-CD52-4026-B5C8-6DF1F262D51D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{34C7147E-CD52-4026-B5C8-6DF1F262D51D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DAE1E872-B2C3-49D2-9ACC-5D7C4AC477DC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DAE1E872-B2C3-49D2-9ACC-5D7C4AC477DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DAE1E872-B2C3-49D2-9ACC-5D7C4AC477DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DAE1E872-B2C3-49D2-9ACC-5D7C4AC477DC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

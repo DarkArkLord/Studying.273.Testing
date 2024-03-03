@@ -10,7 +10,5 @@ namespace DBaseSiteTestFramework
         {
             this.driver = driver;
         }
-
-        //
     }
 }

@@ -20,7 +20,6 @@ namespace DBaseSiteTestFramework
         protected void Setup()
         {
             driver = DarkWebDriver.Init(driverType);
-            //driver.SetUrl("https://artnow.ru/");
         }
 
         [TearDown]

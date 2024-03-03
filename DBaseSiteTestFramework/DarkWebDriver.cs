@@ -1,7 +1,8 @@
-﻿using System;
-using OpenQA.Selenium;
+﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Firefox;
+using OpenQA.Selenium.Support.UI;
+using System;
 
 namespace DArtTests
 {
@@ -38,11 +39,29 @@ namespace DArtTests
         }
         #endregion
 
-        public IWebElement FindByXPath(string xpath)
-            => driver.FindElement(By.XPath(xpath));
+        #region Finding
+        public IWebElement FindByXPath(string xpath, int timeoutMs = 1000)
+            => FindWithWaiting(By.XPath(xpath), timeoutMs);
 
-        public IWebElement FindByCssSelector(string selector)
-            => driver.FindElement(By.CssSelector(selector));
+        public IWebElement FindByText(string element, int timeoutMs = 1000)
+            => FindByXPath($"//*[contains(text(), '{element}')]", timeoutMs);
+
+        private IWebElement FindWithWaiting(By by, int timeoutMs = 1000)
+        {
+            var wait = new WebDriverWait(driver, TimeSpan.FromMilliseconds(timeoutMs));
+            return wait.Until(drv => drv.FindElement(by));
+        }
+
+        public IWebElement? FindByXPathSafe(string xpath, int timeoutMs = 1000)
+            => FindWithWaitingSafe(By.XPath(xpath), timeoutMs);
+
+        private IWebElement? FindWithWaitingSafe(By by, int timeoutMs = 1000)
+        {
+            var wait = new WebDriverWait(driver, TimeSpan.FromMilliseconds(timeoutMs));
+            wait.IgnoreExceptionTypes(typeof(NoSuchElementException));
+            return wait.Until(drv => drv.FindElement(by));
+        }
+        #endregion
 
         public void SetUrl(string url) => driver.Url = url;
 

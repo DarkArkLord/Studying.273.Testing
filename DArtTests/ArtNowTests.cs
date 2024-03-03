@@ -1,8 +1,6 @@
 using DArtNowTestFramework;
 using DBaseSiteTestFramework;
 using NUnit.Framework;
-using NUnit.Framework.Interfaces;
-using System.Threading.Tasks;
 
 namespace DArtTests
 {
@@ -11,14 +9,19 @@ namespace DArtTests
         public ArtNowTests(WebDriverType driverType) : base(driverType) { }
 
         [Test]
-        public void Test1()
+        public void TrainWayTest()
         {
             var home = new HomePage(driver);
             home.OpenPage();
-            home.OpenLeftMenu();
-            home.OpenElementByText("Вышитые картины");
 
-            Task.Delay(1000).Wait();
+            var embroideredPaintings = home.OpenEmbroideredPaintingsPage();
+            embroideredPaintings.OpenGenresMenu();
+            embroideredPaintings.AddGenreFilter("Городской пейзаж");
+            embroideredPaintings.ApplyFilters();
+
+            var trainWay = embroideredPaintings.FindPictureByName("Трамвайный путь");
+
+            Assert.IsNotNull(trainWay);
         }
     }
 }

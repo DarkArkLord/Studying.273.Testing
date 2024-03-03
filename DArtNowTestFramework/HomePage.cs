@@ -1,6 +1,5 @@
 ﻿using DArtTests;
 using DBaseSiteTestFramework;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace DArtNowTestFramework
 {
@@ -13,14 +12,12 @@ namespace DArtNowTestFramework
             driver.SetUrl("https://artnow.ru/");
         }
 
-        public void OpenLeftMenu()
+        public EmbroideredPaintingsPage OpenEmbroideredPaintingsPage()
         {
-            driver.FindByXPath("//*[@id=\"left_container\"]/div/ul[2]/li[15]/div/span").Click();
-        }
-
-        public void OpenElementByText(string element)
-        {
-            driver.FindByXPath($"//*[contains(text(), '{element}')]").Click();
+            driver.FindByText("Показать еще...").Click();
+            driver.FindByText("Вышитые картины").Click();
+            var page = new EmbroideredPaintingsPage(driver);
+            return page;
         }
     }
 }

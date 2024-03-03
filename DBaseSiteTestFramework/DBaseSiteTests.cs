@@ -5,11 +5,11 @@ namespace DBaseSiteTestFramework
 {
     [TestFixture(WebDriverType.Firefox)]
     [TestFixture(WebDriverType.Chrome)]
-    public class BaseSiteTests
+    public class DBaseSiteTests
     {
         private readonly WebDriverType driverType;
 
-        public BaseSiteTests(WebDriverType driverType)
+        public DBaseSiteTests(WebDriverType driverType)
         {
             this.driverType = driverType;
         }

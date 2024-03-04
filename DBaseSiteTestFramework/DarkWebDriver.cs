@@ -40,22 +40,24 @@ namespace DArtTests
         #endregion
 
         #region Finding
-        public IWebElement FindByXPath(string xpath, int timeoutMs = 1000)
+        private const int DefaultTimeoutMs = 5000;
+
+        public IWebElement FindByXPath(string xpath, int timeoutMs = DefaultTimeoutMs)
             => FindWithWaiting(By.XPath(xpath), timeoutMs);
 
-        public IWebElement FindByText(string element, int timeoutMs = 1000)
+        public IWebElement FindByText(string element, int timeoutMs = DefaultTimeoutMs)
             => FindByXPath($"//*[contains(text(), '{element}')]", timeoutMs);
 
-        private IWebElement FindWithWaiting(By by, int timeoutMs = 1000)
+        private IWebElement FindWithWaiting(By by, int timeoutMs = DefaultTimeoutMs)
         {
             var wait = new WebDriverWait(driver, TimeSpan.FromMilliseconds(timeoutMs));
             return wait.Until(drv => drv.FindElement(by));
         }
 
-        public IWebElement? FindByXPathSafe(string xpath, int timeoutMs = 1000)
+        public IWebElement? FindByXPathSafe(string xpath, int timeoutMs = DefaultTimeoutMs)
             => FindWithWaitingSafe(By.XPath(xpath), timeoutMs);
 
-        private IWebElement? FindWithWaitingSafe(By by, int timeoutMs = 1000)
+        private IWebElement? FindWithWaitingSafe(By by, int timeoutMs = DefaultTimeoutMs)
         {
             var wait = new WebDriverWait(driver, TimeSpan.FromMilliseconds(timeoutMs));
             wait.IgnoreExceptionTypes(typeof(NoSuchElementException));

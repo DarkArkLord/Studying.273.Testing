@@ -9,7 +9,7 @@ namespace DArtTests
         public ArtNowTests(WebDriverType driverType) : base(driverType) { }
 
         [Test]
-        public void TrainWayTest()
+        public void TrainWayExistsTest()
         {
             var home = new HomePage(driver);
             home.OpenPage();
@@ -22,6 +22,25 @@ namespace DArtTests
             var trainWay = embroideredPaintings.FindPictureByName("Трамвайный путь");
 
             Assert.IsNotNull(trainWay);
+        }
+
+        [Test]
+        public void TrainWayStyleTest()
+        {
+            var home = new HomePage(driver);
+            home.OpenPage();
+
+            var embPaintingsList = home.OpenEmbroideredPaintingsPage();
+            embPaintingsList.OpenGenresMenu();
+            embPaintingsList.AddGenreFilter("Городской пейзаж");
+            embPaintingsList.ApplyFilters();
+
+            var embPainting = embPaintingsList.OpenPictureByName("Трамвайный путь");
+            var style = embPainting.GetStyleElement();
+
+            Assert.IsNotNull(style);
+            Assert.IsNotNull(style?.Text);
+            Assert.That(style?.Text, Is.EqualTo("Реализм"));
         }
     }
 }

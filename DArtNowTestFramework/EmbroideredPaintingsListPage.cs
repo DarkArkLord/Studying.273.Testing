@@ -4,9 +4,9 @@ using OpenQA.Selenium;
 
 namespace DArtNowTestFramework
 {
-    public class EmbroideredPaintingsPage : DBasePage
+    public class EmbroideredPaintingsListPage : DBasePage
     {
-        public EmbroideredPaintingsPage(DarkWebDriver driver) : base(driver) { }
+        public EmbroideredPaintingsListPage(DarkWebDriver driver) : base(driver) { }
 
         public void OpenGenresMenu()
         {
@@ -26,6 +26,13 @@ namespace DArtNowTestFramework
         public IWebElement? FindPictureByName(string text)
         {
             return driver.FindByXPathSafe($"//*[@id=\"sa_container\"]/div/a/div[contains(text()[2], '{text}')]");
+        }
+
+        public EmbroideredPaintingPage OpenPictureByName(string text)
+        {
+            driver.FindByXPath($"//*[@id=\"sa_container\"]/div/a/div[contains(text()[2], '{text}')]").Click();
+            var page = new EmbroideredPaintingPage(driver);
+            return page;
         }
     }
 }

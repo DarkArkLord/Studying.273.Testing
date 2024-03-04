@@ -12,11 +12,11 @@ namespace DArtNowTestFramework
             driver.SetUrl("https://artnow.ru/");
         }
 
-        public EmbroideredPaintingsListPage OpenEmbroideredPaintingsPage()
+        public EmbroideredPaintingsPage OpenEmbroideredPaintingsPage()
         {
             driver.FindByText("Показать еще...").Click();
             driver.FindByText("Вышитые картины").Click();
-            var page = new EmbroideredPaintingsListPage(driver);
+            var page = new EmbroideredPaintingsPage(driver);
             return page;
         }
     }

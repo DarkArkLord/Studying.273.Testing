@@ -4,9 +4,9 @@ using OpenQA.Selenium;
 
 namespace DArtNowTestFramework
 {
-    public class EmbroideredPaintingPage : DBasePage
+    public class PaintingPage : DBasePage
     {
-        public EmbroideredPaintingPage(DarkWebDriver driver) : base(driver) { }
+        public PaintingPage(DarkWebDriver driver) : base(driver) { }
 
         public IWebElement? GetStyleElement()
         {

@@ -4,9 +4,9 @@ using OpenQA.Selenium;
 
 namespace DArtNowTestFramework
 {
-    public class EmbroideredPaintingsPage : DBasePage
+    public class PaintingsListPage : DBasePage
     {
-        public EmbroideredPaintingsPage(DarkWebDriver driver) : base(driver) { }
+        public PaintingsListPage(DarkWebDriver driver) : base(driver) { }
 
         public void OpenGenresMenu()
         {

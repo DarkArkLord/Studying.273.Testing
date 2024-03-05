@@ -14,12 +14,12 @@ namespace DArtTests
             var home = new HomePage(driver);
             home.OpenPage();
 
-            var embroideredPaintings = home.OpenEmbroideredPaintingsPage();
-            embroideredPaintings.OpenGenresMenu();
-            embroideredPaintings.AddGenreFilter("Городской пейзаж");
-            embroideredPaintings.ApplyFilters();
+            var paintings = home.OpenListFromLeftMenu("Вышитые картины");
+            paintings.OpenGenresMenu();
+            paintings.AddGenreFilter("Городской пейзаж");
+            paintings.ApplyFilters();
 
-            var trainWay = embroideredPaintings.FindPictureByName("Трамвайный путь");
+            var trainWay = paintings.FindPictureByName("Трамвайный путь");
 
             Assert.IsNotNull(trainWay);
         }
@@ -30,13 +30,13 @@ namespace DArtTests
             var home = new HomePage(driver);
             home.OpenPage();
 
-            var embPaintingsList = home.OpenEmbroideredPaintingsPage();
-            embPaintingsList.OpenGenresMenu();
-            embPaintingsList.AddGenreFilter("Городской пейзаж");
-            embPaintingsList.ApplyFilters();
+            var paintings = home.OpenListFromLeftMenu("Вышитые картины");
+            paintings.OpenGenresMenu();
+            paintings.AddGenreFilter("Городской пейзаж");
+            paintings.ApplyFilters();
 
-            var embPainting = embPaintingsList.OpenPictureByName("Трамвайный путь");
-            var style = embPainting.GetStyleElement();
+            var painting = paintings.OpenPictureByName("Трамвайный путь");
+            var style = painting.GetStyleElement();
 
             Assert.IsNotNull(style);
             Assert.IsNotNull(style?.Text);

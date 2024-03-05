@@ -42,5 +42,27 @@ namespace DArtTests
             Assert.IsNotNull(style?.Text);
             Assert.That(style?.Text, Is.EqualTo("Реализм"));
         }
+
+        [Test]
+        public void FavoritesTest()
+        {
+            var home = new HomePage(driver);
+            home.OpenPage();
+
+            var paintings = home.OpenListFromLeftMenu("Батик");
+            var addedName = paintings.AddFirstPictToFavoritesAndGetName();
+
+            var favorites = paintings.OpenFavoritesPage();
+            var favName = favorites.GetFirstElementTitle();
+
+            favorites.TryRemoveFirstElement();
+            //var noFavName = favorites.GetFirstElementTitle();
+
+            Assert.IsNotNull(addedName);
+            Assert.IsNotNull(favName);
+            //Assert.IsNull(noFavName);
+
+            Assert.That(favName, Is.EqualTo(addedName));
+        }
     }
 }

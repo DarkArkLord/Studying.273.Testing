@@ -64,5 +64,21 @@ namespace DArtTests
 
             Assert.That(favName, Is.EqualTo(addedName));
         }
+
+        [Test]
+        public void SearchTest()
+        {
+            var searchText = "Жираф";
+
+            var home = new HomePage(driver);
+            home.OpenPage();
+
+            var search = home.UseSearch(searchText);
+            var searchResultText = search.GetFirstElementName();
+
+            Assert.IsNotNull(searchResultText);
+            Assert.IsNotEmpty(searchResultText);
+            StringAssert.Contains(searchText, searchResultText);
+        }
     }
 }

@@ -19,5 +19,13 @@ namespace DArtNowTestFramework
             var page = new PaintingsListPage(driver);
             return page;
         }
+
+        public SearchPage UseSearch(string text)
+        {
+            driver.FindByXPath("//*[@id=\"MainSearchForm\"]/div/div[1]/input[3]").SendKeys(text);
+            driver.FindByXPath("//*[@id=\"MainSearchForm\"]/div/div[2]/button").Click();
+            var page = new SearchPage(driver);
+            return page;
+        }
     }
 }

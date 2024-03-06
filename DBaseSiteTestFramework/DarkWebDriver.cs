@@ -63,6 +63,17 @@ namespace DArtTests
             wait.IgnoreExceptionTypes(typeof(NoSuchElementException));
             return wait.Until(drv => drv.FindElement(by));
         }
+
+        public void WaitForClick(IWebElement element, int timeoutMs = DefaultTimeoutMs)
+        {
+            var wait = new WebDriverWait(driver, TimeSpan.FromMilliseconds(timeoutMs));
+            wait.IgnoreExceptionTypes(typeof(ElementNotInteractableException));
+            wait.Until(drv =>
+            {
+                element.Click();
+                return true;
+            });
+        }
         #endregion
 
         public void SetUrl(string url) => driver.Url = url;

@@ -35,7 +35,8 @@ namespace DArtNowTestFramework
 
         public PaintingPage OpenPictureByName(string text)
         {
-            driver.FindByXPath($"//*[@id=\"sa_container\"]/div/a/div[contains(text()[2], '{text}')]").Click();
+            var element = driver.FindByXPath($"//*[@id=\"sa_container\"]/div/a/div[contains(text()[2], '{text}')]");
+            driver.WaitForClick(element);
             var page = new PaintingPage(driver);
             return page;
         }

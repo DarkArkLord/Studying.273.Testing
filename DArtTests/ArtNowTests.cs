@@ -1,6 +1,7 @@
 using DArtNowTestFramework;
 using DBaseSiteTestFramework;
 using NUnit.Framework;
+using System.Threading.Tasks;
 
 namespace DArtTests
 {
@@ -79,6 +80,25 @@ namespace DArtTests
             Assert.IsNotNull(searchResultText);
             Assert.IsNotEmpty(searchResultText);
             StringAssert.Contains(searchText, searchResultText);
+        }
+
+        [Test]
+        public void BasketTest()
+        {
+            var home = new HomePage(driver);
+            home.OpenPage();
+
+            var paintings = home.OpenListFromLeftMenu("Ювелирное искусство");
+            paintings.AddAvailabilityFilter("В наличии");
+            paintings.ApplyFilters();
+            var itemPrice = paintings.GetFirstItemPrice();
+            paintings.AddFirstItemToBasket();
+
+            var basket = paintings.OpenBasketPageAfterAddToBasket();
+            var basketItemPrice = basket.GetFirstItemPrice();
+            basket.RemoveFirstElement();
+
+            Assert.That(basketItemPrice, Is.EqualTo(itemPrice));
         }
     }
 }

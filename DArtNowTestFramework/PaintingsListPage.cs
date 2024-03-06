@@ -1,8 +1,6 @@
 ﻿using DArtTests;
 using DBaseSiteTestFramework;
 using OpenQA.Selenium;
-using System.Linq;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace DArtNowTestFramework
 {
@@ -18,6 +16,11 @@ namespace DArtNowTestFramework
         public void AddGenreFilter(string genre)
         {
             driver.FindByXPath($"//*[@id=\"genrebox\"]/div/label[contains(text(), '{genre}')]").Click();
+        }
+
+        public void AddAvailabilityFilter(string availability)
+        {
+            driver.FindByXPath($"//*[@id=\"salebox\"]/div/label[contains(text(), '{availability}')]").Click();
         }
 
         public void ApplyFilters()
@@ -48,6 +51,27 @@ namespace DArtNowTestFramework
         {
             driver.FindByXPath("/html/body/div[1]/span[6]/img").Click();
             var page = new FavoritesPage(driver);
+            return page;
+        }
+
+        public int GetFirstItemPrice()
+        {
+            var element = driver.FindByXPath("//*[@id=\"sa_container\"]/div[2]/div[2]/meta[2]");
+            var priceStr = element.GetAttribute("content");
+            if (priceStr is null || priceStr.Length < 1) throw new System.Exception("Не найдено свойства цены");
+            if (!int.TryParse(priceStr, out var price)) throw new System.Exception($"Цена не является корректным числом: {priceStr}");
+            return price;
+        }
+
+        public void AddFirstItemToBasket()
+        {
+            driver.FindByXPath("//*[@id=\"sa_container\"]/div[2]/a[2]/div").Click();
+        }
+
+        public BasketPage OpenBasketPageAfterAddToBasket()
+        {
+            driver.FindByXPath("//*[@id=\"cmodal\"]/div/p/button[1]").Click();
+            var page = new BasketPage(driver);
             return page;
         }
     }

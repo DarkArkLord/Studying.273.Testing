@@ -1,7 +1,6 @@
 using DArtNowTestFramework;
 using DBaseSiteTestFramework;
 using NUnit.Framework;
-using System.Threading.Tasks;
 
 namespace DArtTests
 {
@@ -51,7 +50,8 @@ namespace DArtTests
             home.OpenPage();
 
             var paintings = home.OpenListFromLeftMenu("Батик");
-            var addedName = paintings.AddFirstPictToFavoritesAndGetName();
+            var addedName = paintings.GetFirstPictName();
+            paintings.AddFirstPictToFavorites();
 
             var favorites = paintings.OpenFavoritesPage();
             var favName = favorites.GetFirstElementTitle();

@@ -40,9 +40,13 @@ namespace DArtNowTestFramework
             return page;
         }
 
-        public string AddFirstPictToFavoritesAndGetName()
+        public void AddFirstPictToFavorites()
         {
             driver.FindByXPath("//*[@id=\"sa_container\"]/div[2]/div[4]").Click();
+        }
+
+        public string GetFirstPictName()
+        {
             var element = driver.FindByXPath("//*[@id=\"sa_container\"]/div[2]/a[1]/div");
             return element.Text;
         }

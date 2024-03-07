@@ -68,12 +68,12 @@ namespace DArtNowTestFramework
             return price;
         }
 
-        public void AddFirstItemToBasket()
+        public void AddFirstItemToCart()
         {
             driver.FindByXPath("//*[@id=\"sa_container\"]/div[2]/a[2]/div").Click();
         }
 
-        public BasketPage OpenBasketPageAfterAddToBasket()
+        public BasketPage OpenCartPageAfterAddToBasket()
         {
             driver.FindByXPath("//*[@id=\"cmodal\"]/div/p/button[1]").Click();
             var page = new BasketPage(driver);

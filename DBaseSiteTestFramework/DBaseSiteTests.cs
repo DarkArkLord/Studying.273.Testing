@@ -22,12 +22,14 @@ namespace DBaseSiteTestFramework
         protected DarkWebDriver driver;
 
         [SetUp]
+        [AllureStep("Setup web driver")]
         protected void Setup()
         {
             driver = DarkWebDriver.Init(driverType);
         }
 
         [TearDown]
+        [AllureStep("Close web driver")]
         protected void StopBrowser()
         {
             driver.Close();

@@ -1,5 +1,6 @@
 ﻿using DArtTests;
 using DBaseSiteTestFramework;
+using NUnit.Allure.Attributes;
 
 namespace DArtNowTestFramework
 {
@@ -7,6 +8,7 @@ namespace DArtNowTestFramework
     {
         public HomePage(DarkWebDriver driver) : base(driver) { }
 
+        [AllureStep("Open artnow.ru home page")]
         public void OpenPage()
         {
             driver.SetUrl("https://artnow.ru/");

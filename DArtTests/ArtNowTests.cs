@@ -1,14 +1,19 @@
 using DArtNowTestFramework;
 using DBaseSiteTestFramework;
+using NUnit.Allure.Attributes;
+using NUnit.Allure.Core;
 using NUnit.Framework;
 
 namespace DArtTests
 {
+    [AllureNUnit]
+    [AllureSuite("Root Suite")]
     public class ArtNowTests : DBaseSiteTests
     {
         public ArtNowTests(WebDriverType driverType) : base(driverType) { }
 
         [Test]
+        [AllureName("t1")]
         public void TrainWayExistsTest()
         {
             var home = new HomePage(driver);
@@ -25,6 +30,7 @@ namespace DArtTests
         }
 
         [Test]
+        [AllureName("t2")]
         public void TrainWayStyleTest()
         {
             var home = new HomePage(driver);
@@ -44,6 +50,7 @@ namespace DArtTests
         }
 
         [Test]
+        [AllureName("t3")]
         public void FavoritesTest()
         {
             var home = new HomePage(driver);
@@ -67,6 +74,7 @@ namespace DArtTests
         }
 
         [Test]
+        [AllureName("t4")]
         public void SearchTest()
         {
             var searchText = "Жираф";
@@ -83,6 +91,7 @@ namespace DArtTests
         }
 
         [Test]
+        [AllureName("t5")]
         public void BasketTest()
         {
             var home = new HomePage(driver);
@@ -102,6 +111,7 @@ namespace DArtTests
         }
 
         [Test]
+        [AllureName("t6")]
         public void AlwaysFailTest()
         {
             var home = new HomePage(driver);

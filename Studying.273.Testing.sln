@@ -7,9 +7,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Studying.273.Testing", "Stu
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DArtTests", "DArtTests\DArtTests.csproj", "{FB0A5BC4-F876-4FE2-B3A7-D3D20D7640D4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DBaseSiteTestFramework", "DBaseSiteTestFramework\DBaseSiteTestFramework.csproj", "{34C7147E-CD52-4026-B5C8-6DF1F262D51D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DBaseSiteTestFramework", "DBaseSiteTestFramework\DBaseSiteTestFramework.csproj", "{34C7147E-CD52-4026-B5C8-6DF1F262D51D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DArtNowTestFramework", "DArtNowTestFramework\DArtNowTestFramework.csproj", "{DAE1E872-B2C3-49D2-9ACC-5D7C4AC477DC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DArtNowTestFramework", "DArtNowTestFramework\DArtNowTestFramework.csproj", "{DAE1E872-B2C3-49D2-9ACC-5D7C4AC477DC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

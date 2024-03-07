@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
         <TargetFramework>net8.0</TargetFramework>
@@ -8,6 +8,15 @@
         <IsPackable>false</IsPackable>
         <IsTestProject>true</IsTestProject>
     </PropertyGroup>
+
+    <ItemGroup>
+      <Compile Remove="Allure-Report\**" />
+      <Compile Remove="Allure-Results\**" />
+      <EmbeddedResource Remove="Allure-Report\**" />
+      <EmbeddedResource Remove="Allure-Results\**" />
+      <None Remove="Allure-Report\**" />
+      <None Remove="Allure-Results\**" />
+    </ItemGroup>
 
     <ItemGroup>
         <PackageReference Include="Allure.NUnit" Version="2.11.0" />
@@ -22,6 +31,12 @@
     <ItemGroup>
         <ProjectReference Include="..\DArtNowTestFramework\DArtNowTestFramework.csproj" />
         <ProjectReference Include="..\DBaseSiteTestFramework\DBaseSiteTestFramework.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Update="allureConfig.json">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
     </ItemGroup>
 
 </Project>

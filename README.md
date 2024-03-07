@@ -5,7 +5,7 @@
 dotnet test
 
 Для генерации отчета в папке решения:
-allure generate
+allure generate --clean -o Allure-Report
 
 Для открытия сгенерированного отчета:
 allure open

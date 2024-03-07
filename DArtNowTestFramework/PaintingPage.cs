@@ -1,6 +1,6 @@
 ﻿using DArtTests;
 using DBaseSiteTestFramework;
-using OpenQA.Selenium;
+using NUnit.Allure.Attributes;
 
 namespace DArtNowTestFramework
 {
@@ -8,9 +8,10 @@ namespace DArtNowTestFramework
     {
         public PaintingPage(DarkWebDriver driver) : base(driver) { }
 
-        public IWebElement? GetStyleElement()
+        [AllureStep("Get style element text")]
+        public string? GetStyleText()
         {
-            return driver.FindByXPathSafe("//*[@id=\"main_container\"]/div[3]/div[2]/div[5]/a");
+            return driver.FindByXPathSafe("//*[@id=\"main_container\"]/div[3]/div[2]/div[5]/a")?.Text;
         }
     }
 }

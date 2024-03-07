@@ -39,11 +39,10 @@ namespace DArtTests
             paintings.ApplyFilters();
 
             var painting = paintings.OpenPictureByName("Трамвайный путь");
-            var style = painting.GetStyleElement();
+            var style = painting.GetStyleText();
 
             Assert.IsNotNull(style);
-            Assert.IsNotNull(style?.Text);
-            Assert.That(style?.Text, Is.EqualTo("Реализм"));
+            Assert.That(style, Is.EqualTo("Реализм"));
         }
 
         [Test]
@@ -100,7 +99,7 @@ namespace DArtTests
             var itemPrice = paintings.GetFirstItemPrice();
             paintings.AddFirstItemToCart();
 
-            var basket = paintings.OpenCartPageAfterAddToBasket();
+            var basket = paintings.OpenCartPageAfterAddToCart();
             var basketItemPrice = basket.GetFirstItemPrice();
             basket.RemoveFirstElement();
 
@@ -113,7 +112,7 @@ namespace DArtTests
         {
             var home = new HomePage(driver);
             home.OpenPage();
-            home.ClickAElement();
+            home.ClickNotExistsElement();
 
             Assert.IsNotNull(null);
         }

@@ -14,6 +14,7 @@ namespace DArtNowTestFramework
             driver.SetUrl("https://artnow.ru/");
         }
 
+        [AllureStep("Open {text} from left menu")]
         public PaintingsListPage OpenListFromLeftMenu(string text)
         {
             driver.FindByText("Показать еще...").Click();
@@ -22,6 +23,7 @@ namespace DArtNowTestFramework
             return page;
         }
 
+        [AllureStep("Search {text}")]
         public SearchPage UseSearch(string text)
         {
             driver.FindByXPath("//*[@id=\"MainSearchForm\"]/div/div[1]/input[3]").SendKeys(text);
@@ -30,7 +32,8 @@ namespace DArtNowTestFramework
             return page;
         }
 
-        public void ClickAElement()
+        [AllureStep("Click to not exists element")]
+        public void ClickNotExistsElement()
         {
             driver.FindByXPath("/html/body/h1").Click();
         }

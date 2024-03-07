@@ -1,17 +1,16 @@
 ﻿using DArtTests;
 using DBaseSiteTestFramework;
+using NUnit.Allure.Attributes;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DArtNowTestFramework
 {
-    public class BasketPage : DBasePage
+    public class CartPage : DBasePage
     {
-        public BasketPage(DarkWebDriver driver) : base(driver) { }
+        public CartPage(DarkWebDriver driver) : base(driver) { }
 
+        [AllureStep("Get first element price in cart")]
         public int GetFirstItemPrice()
         {
             var element = driver.FindByXPath("/html/body/div[2]/div[2]/div[1]/div[1]/div[3]/div[5]/div[2]");
@@ -21,6 +20,7 @@ namespace DArtNowTestFramework
             return price;
         }
 
+        [AllureStep("Try remove first element in cart")]
         public void RemoveFirstElement()
         {
             driver.FindByXPath("/html/body/div[2]/div[2]/div[1]/div[1]/div[2]").Click();

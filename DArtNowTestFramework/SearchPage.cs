@@ -1,11 +1,6 @@
 ﻿using DArtTests;
 using DBaseSiteTestFramework;
-using OpenQA.Selenium;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using NUnit.Allure.Attributes;
 
 namespace DArtNowTestFramework
 {
@@ -13,6 +8,7 @@ namespace DArtNowTestFramework
     {
         public SearchPage(DarkWebDriver driver) : base(driver) { }
 
+        [AllureStep("Get first element name in search")]
         public string? GetFirstElementName()
         {
             return driver.FindByXPathSafe("//*[@id=\"sa_container\"]/div[2]/a[1]/div")?.Text;

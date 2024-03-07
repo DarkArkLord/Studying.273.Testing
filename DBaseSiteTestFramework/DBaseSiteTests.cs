@@ -1,10 +1,12 @@
 ﻿using DArtTests;
+using NUnit.Allure.Core;
 using NUnit.Framework;
 
 namespace DBaseSiteTestFramework
 {
     [TestFixture(WebDriverType.Firefox)]
     [TestFixture(WebDriverType.Chrome)]
+    [AllureNUnit]
     public class DBaseSiteTests
     {
         private readonly WebDriverType driverType;

@@ -1,12 +1,10 @@
 using DArtNowTestFramework;
 using DBaseSiteTestFramework;
 using NUnit.Allure.Attributes;
-using NUnit.Allure.Core;
 using NUnit.Framework;
 
 namespace DArtTests
 {
-    [AllureNUnit]
     [AllureSuite("Root Suite")]
     public class ArtNowTests : DBaseSiteTests
     {

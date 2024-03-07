@@ -27,5 +27,10 @@ namespace DArtNowTestFramework
             var page = new SearchPage(driver);
             return page;
         }
+
+        public void ClickAElement()
+        {
+            driver.FindByXPath("/html/body/h1").Click();
+        }
     }
 }

@@ -100,5 +100,15 @@ namespace DArtTests
 
             Assert.That(basketItemPrice, Is.EqualTo(itemPrice));
         }
+
+        [Test]
+        public void AlwaysFailTest()
+        {
+            var home = new HomePage(driver);
+            home.OpenPage();
+            home.ClickAElement();
+
+            Assert.IsNotNull(null);
+        }
     }
 }

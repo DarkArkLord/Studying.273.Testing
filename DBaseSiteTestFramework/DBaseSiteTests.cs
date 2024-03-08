@@ -1,7 +1,11 @@
-﻿using DArtTests;
+﻿using Allure.Net.Commons;
+using DArtTests;
 using NUnit.Allure.Attributes;
 using NUnit.Allure.Core;
 using NUnit.Framework;
+using NUnit.Framework.Interfaces;
+using OpenQA.Selenium;
+using System;
 
 namespace DBaseSiteTestFramework
 {
@@ -32,7 +36,23 @@ namespace DBaseSiteTestFramework
         [AllureStep("Close web driver")]
         protected void StopBrowser()
         {
+            if (TestContext.CurrentContext.Result.Outcome != ResultState.Success)
+            {
+                MakeScreenshot();
+            }
+
             driver.Close();
+        }
+
+        protected void MakeScreenshot()
+        {
+            var screenshot = ((ITakesScreenshot)driver.Driver).GetScreenshot();
+            var dateText = DateTime.Now.ToString("dd-mm-yyyy-HH-mm-ss");
+            var filename = $"{TestContext.CurrentContext.Test.MethodName}_screenshot_{dateText}.png";
+            var path = $"{AllureLifecycle.Instance.ResultsDirectory}\\{filename}";
+            screenshot.SaveAsFile(path);
+            TestContext.AddTestAttachment(path);
+            AllureApi.AddAttachment(filename, "image/png", path);
         }
     }
 }

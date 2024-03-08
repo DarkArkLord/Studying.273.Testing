@@ -48,11 +48,12 @@ namespace DBaseSiteTestFramework
         {
             var screenshot = ((ITakesScreenshot)driver.Driver).GetScreenshot();
             var dateText = DateTime.Now.ToString("dd-mm-yyyy-HH-mm-ss");
-            var filename = $"{TestContext.CurrentContext.Test.MethodName}_screenshot_{dateText}.png";
-            var path = $"{AllureLifecycle.Instance.ResultsDirectory}\\{filename}";
+            var fileName = $"{TestContext.CurrentContext.Test.MethodName}_screenshot_{dateText}.png";
+            var path = $"{AllureLifecycle.Instance.ResultsDirectory}\\{fileName}";
+
             screenshot.SaveAsFile(path);
             TestContext.AddTestAttachment(path);
-            AllureApi.AddAttachment(filename, "image/png", path);
+            AllureApi.AddAttachment(fileName, "image/png", path);
         }
     }
 }

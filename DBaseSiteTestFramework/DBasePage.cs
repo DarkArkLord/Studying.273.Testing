@@ -2,6 +2,9 @@
 
 namespace DBaseSiteTestFramework
 {
+    /// <summary>
+    /// Базовый класс страницы
+    /// </summary>
     public class DBasePage
     {
         protected DarkWebDriver driver;

@@ -6,10 +6,18 @@ using System.Linq;
 
 namespace DArtNowTestFramework
 {
+    /// <summary>
+    /// Страницы корзины
+    /// </summary>
     public class CartPage : DBasePage
     {
         public CartPage(DarkWebDriver driver) : base(driver) { }
 
+        /// <summary>
+        /// Получение цены первого элемента
+        /// </summary>
+        /// <returns></returns>
+        /// <exception cref="Exception">Если что-то пойдет не так</exception>
         [AllureStep("Get first element price in cart")]
         public int GetFirstItemPrice()
         {
@@ -20,6 +28,9 @@ namespace DArtNowTestFramework
             return price;
         }
 
+        /// <summary>
+        /// Удаление первого элемента из корзины
+        /// </summary>
         [AllureStep("Try remove first element in cart")]
         public void RemoveFirstElement()
         {

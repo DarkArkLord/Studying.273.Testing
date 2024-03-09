@@ -7,15 +7,18 @@ using NUnit.Framework.Interfaces;
 using OpenQA.Selenium;
 using System;
 
-[assembly: LevelOfParallelism(2)]
+[assembly: LevelOfParallelism(2)] // Установка количества процессов
 namespace DBaseSiteTestFramework
 {
-    [Parallelizable(ParallelScope.Fixtures)]
-    [AllureNUnit]
-    [TestFixture(WebDriverType.Firefox, Category = "Firefox Tests")]
-    [AllureSuite("Firefox Tests")]
-    [TestFixture(WebDriverType.Chrome, Category = "Chrome Tests")]
-    [AllureSuite("Chrome Tests")]
+    /// <summary>
+    /// Базовый класс для тестов
+    /// </summary>
+    [Parallelizable(ParallelScope.Fixtures)] // Параллелизм по Fixtures
+    [AllureNUnit] // Для использования Allure
+    [TestFixture(WebDriverType.Firefox, Category = "Firefox Tests")] // Запуск тестов с Firefox драйвером
+    [AllureSuite("Firefox Tests")] // Категория Allure с Firefox драйвером
+    [TestFixture(WebDriverType.Chrome, Category = "Chrome Tests")] // Запуск тестов с Chrome драйвером
+    [AllureSuite("Chrome Tests")] // Категория Allure с Chrome драйвером
     public class DBaseSiteTests
     {
         private readonly WebDriverType driverType;
@@ -27,6 +30,9 @@ namespace DBaseSiteTestFramework
 
         protected DarkWebDriver driver;
 
+        /// <summary>
+        /// Действия перед запуском каждого теста
+        /// </summary>
         [SetUp]
         [AllureStep("Setup web driver")]
         protected void Setup()
@@ -34,10 +40,14 @@ namespace DBaseSiteTestFramework
             driver = DarkWebDriver.Init(driverType);
         }
 
+        /// <summary>
+        /// Действия после запуска каждого теста
+        /// </summary>
         [TearDown]
         [AllureStep("Close web driver")]
         protected void StopBrowser()
         {
+            // Если тест завершился неудачно - сделать скриншот и приложить
             if (TestContext.CurrentContext.Result.Outcome != ResultState.Success)
             {
                 MakeScreenshot();
@@ -46,6 +56,9 @@ namespace DBaseSiteTestFramework
             driver.Close();
         }
 
+        /// <summary>
+        /// Создание скриншота
+        /// </summary>
         protected void MakeScreenshot()
         {
             var screenshot = ((ITakesScreenshot)driver.Driver).GetScreenshot();

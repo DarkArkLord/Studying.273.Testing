@@ -9,6 +9,10 @@ namespace DArtTests
     {
         public ArtNowTests(WebDriverType driverType) : base(driverType) { }
 
+
+        /// <summary>
+        /// Проверка существования картины "Трамвайный путь"
+        /// </summary>
         [Test]
         [AllureName("Check Train Way exists")]
         public void TrainWayExistsTest()
@@ -26,6 +30,9 @@ namespace DArtTests
             Assert.IsNotNull(trainWay);
         }
 
+        /// <summary>
+        /// Проверка стиля картины "Трамвайный путь"
+        /// </summary>
         [Test]
         [AllureName("Check Train Way style")]
         public void TrainWayStyleTest()
@@ -45,6 +52,9 @@ namespace DArtTests
             Assert.That(style, Is.EqualTo("Реализм"));
         }
 
+        /// <summary>
+        /// Проверка избранного
+        /// </summary>
         [Test]
         [AllureName("Check favorirtes")]
         public void FavoritesTest()
@@ -69,6 +79,9 @@ namespace DArtTests
             Assert.That(favName, Is.EqualTo(addedName));
         }
 
+        /// <summary>
+        /// Проверка поиска
+        /// </summary>
         [Test]
         [AllureName("Check search")]
         public void SearchTest()
@@ -86,6 +99,9 @@ namespace DArtTests
             StringAssert.Contains(searchText, searchResultText);
         }
 
+        /// <summary>
+        /// Проверка корзины
+        /// </summary>
         [Test]
         [AllureName("Check Cart")]
         public void CartTest()
@@ -106,6 +122,9 @@ namespace DArtTests
             Assert.That(basketItemPrice, Is.EqualTo(itemPrice));
         }
 
+        /// <summary>
+        /// Приверка создания скриншота при падении теста
+        /// </summary>
         [Test]
         [AllureName("Always fail")]
         public void AlwaysFailTest()

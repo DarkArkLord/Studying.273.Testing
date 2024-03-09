@@ -1,8 +1,8 @@
 # Studying.273.Testing
 
 Выполнить в PowerShell:
-Для запуска тестов:
-dotnet test
+Для запуска тестов в 2 потока:
+dotnet test -m:2
 
 Для генерации отчета в папке решения:
 allure generate --clean -o Allure-Report

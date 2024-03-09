@@ -7,8 +7,10 @@ using NUnit.Framework.Interfaces;
 using OpenQA.Selenium;
 using System;
 
+[assembly: LevelOfParallelism(2)]
 namespace DBaseSiteTestFramework
 {
+    [Parallelizable(ParallelScope.Fixtures)]
     [AllureNUnit]
     [TestFixture(WebDriverType.Firefox, Category = "Firefox Tests")]
     [AllureSuite("Firefox Tests")]

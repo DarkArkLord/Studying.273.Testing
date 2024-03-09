@@ -47,7 +47,7 @@ namespace DBaseSiteTestFramework
         protected void MakeScreenshot()
         {
             var screenshot = ((ITakesScreenshot)driver.Driver).GetScreenshot();
-            var dateText = DateTime.Now.ToString("dd-mm-yyyy-HH-mm-ss");
+            var dateText = DateTime.Now.ToString("dd-mm-yyyy-HH-mm-ss-fff");
             var fileName = $"{TestContext.CurrentContext.Test.MethodName}_screenshot_{dateText}.png";
             var path = $"{AllureLifecycle.Instance.ResultsDirectory}\\{fileName}";
 

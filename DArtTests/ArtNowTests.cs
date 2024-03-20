@@ -9,7 +9,6 @@ namespace DArtTests
     {
         public ArtNowTests(WebDriverType driverType) : base(driverType) { }
 
-
         /// <summary>
         /// Проверка существования картины "Трамвайный путь"
         /// </summary>
@@ -76,7 +75,9 @@ namespace DArtTests
             Assert.IsNotNull(favName);
             //Assert.IsNull(noFavName);
 
-            Assert.That(favName, Is.EqualTo(addedName));
+            var normalizedFavName = favName.Replace("\r\n", " ");
+
+            Assert.That(normalizedFavName, Is.EqualTo(addedName));
         }
 
         /// <summary>

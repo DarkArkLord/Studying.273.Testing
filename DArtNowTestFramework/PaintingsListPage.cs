@@ -115,7 +115,7 @@ namespace DArtNowTestFramework
         [AllureStep("Get first picture price")]
         public int GetFirstItemPrice()
         {
-            var element = driver.FindByXPath("//*[@id=\"sa_container\"]/div[2]/div[2]/meta[2]");
+            var element = driver.FindByXPath("//*[@id=\"sa_container\"]/div[2]/div[1]/meta[2]");
             var priceStr = element.GetAttribute("content");
             if (priceStr is null || priceStr.Length < 1) throw new System.Exception("Не найдено свойства цены");
             if (!int.TryParse(priceStr, out var price)) throw new System.Exception($"Цена не является корректным числом: {priceStr}");
